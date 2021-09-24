@@ -2,13 +2,18 @@ import datastructures.*;
 
 public class Main {
     public static void main(String[] args) {
-        Node newYork = new Node("New York");
-        Node toronto = new Node("Toronto");
-        Node vancouver = new Node("Vancouver");
+        LinkedList cities = new LinkedList();
+        cities.addToHead(new Node("New York"));
+        cities.addToHead(new Node("Shanghai"));
+        cities.addToHead(new Node("Toronto"));
+        cities.addToHead(new Node("Vancouver"));
 
-        newYork.setNextNode(toronto);
-        toronto.setNextNode(vancouver);
+        cities.printList();
 
-        System.out.println(newYork.printNode());
+        cities.addToTail(new Node("Mississauga"));
+        cities.addToTail(new Node("Oakville"));
+        cities.addToTail(new Node("Ottawa"));
+
+        cities.printList();
     }
 }

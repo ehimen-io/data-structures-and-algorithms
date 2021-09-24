@@ -36,14 +36,4 @@ public class Node {
     public boolean hasPrevNode() {
         return this.prev != null;
     }
-
-    public String printNode() {
-        String stringRep = "(" + this.data + ")-->";
-        if (this.next != null) {
-            stringRep += this.next.printNode();
-        } else {
-            stringRep += "null";
-        }
-        return stringRep;
-    }
 }
