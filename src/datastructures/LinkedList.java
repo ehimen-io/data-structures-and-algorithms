@@ -18,11 +18,15 @@ public class LinkedList {
 
     // Adding a node to the tail of the list
     public void addToTail(Node newTail) {
-        Node current = this.head;
-        while (current.hasNextNode()) {
-            current = current.getNextNode();
+        Node tail = this.head;
+        if (this.head == null) {
+            this.head = newTail;
+        } else {
+            while (tail.hasNextNode()) {
+                tail = tail.getNextNode();
+            }
+            tail.setNextNode(newTail);
         }
-        current.setNextNode(newTail);
     }
 
     // Remove head of the list
