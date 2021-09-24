@@ -12,5 +12,9 @@ public class Main {
         cities.addToTail(new Node("Ottawa"));
 
         cities.printList();
+
+        cities.removeByData("Vancouver");
+        cities.removeByData("Ottawa");
+        cities.printList();
     }
 }

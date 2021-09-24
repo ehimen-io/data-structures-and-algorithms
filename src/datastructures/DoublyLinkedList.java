@@ -68,6 +68,32 @@ public class DoublyLinkedList {
         return currentTail.data;
     }
 
+    // Remove by data
+    public String removeByData(String data) {
+        if (this.head.data == data) {
+            return removeHead();
+        }
+        if (this.tail.data == data) {
+            return removeTail();
+        }
+        Node current = this.head;
+        Node prev = null;
+        Node next = null;
+        while (current != null && current.data != data) {
+            prev = current;
+            current = current.getNextNode();
+        }
+        if (current == null) {
+            System.out.println("No node found!");
+            return null;
+        }
+        next = current.getNextNode();
+        prev.setNextNode(next);
+        next.setPreviousNode(prev);
+
+        return current.data;
+    }
+
     // Prints a string representation of the list
     public void printList() {
         Node current = this.head;
