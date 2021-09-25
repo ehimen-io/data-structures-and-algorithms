@@ -2,17 +2,14 @@ import datastructures.*;
 
 public class Main {
     public static void main(String[] args) {
-        Stack cities = new Stack(4);
-        cities.push("New York");
-        cities.push("Los Angeles");
-        cities.push("Vancouver");
-        cities.push("Ottawa");
-        cities.push("Montreal");
+        HashMap surnames = new HashMap();
+        surnames.store("Owens", "Ehimen");
+        surnames.store("Annette", "Ehimen");
+        surnames.store("Comfort", "Survival");
+        surnames.store("John", "Lennon");
+        surnames.store("Owens", "Oseghale");
 
-        System.out.println(cities.peek());
-        System.out.println(cities.pop());
-        System.out.println(cities.pop());
-        System.out.println(cities.pop());
-        System.out.println(cities.pop());
+        surnames.printMap();
+
     }
 }
