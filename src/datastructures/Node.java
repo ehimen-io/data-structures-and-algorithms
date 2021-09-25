@@ -11,7 +11,29 @@ public class Node {
         this.prev = null;
     }
 
-    public void printNode() {
-        System.out.println("Node " + this.data + " created!");
+    // Next node setter and getter
+    public void setNextNode(Node nextNode) {
+        this.next = nextNode;
+    }
+
+    public Node getNextNode() {
+        return this.next;
+    }
+
+    public boolean hasNextNode() {
+        return this.next != null;
+    }
+
+    // Previous node setter and getter
+    public void setPreviousNode(Node previousNode) {
+        this.prev = previousNode;
+    }
+
+    public Node getPreviousNode() {
+        return this.prev;
+    }
+
+    public boolean hasPrevNode() {
+        return this.prev != null;
     }
 }
