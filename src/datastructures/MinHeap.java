@@ -108,10 +108,9 @@ public class MinHeap {
     }
 
     private void swap(int firstIndex, int lastIndex) {
-        int firstElement = this.heap.remove(firstIndex);
-        int lastElement = this.heap.remove(lastIndex);
-        this.heap.add(lastIndex, firstElement);
-        this.heap.add(firstIndex, lastElement);
+        int temp = this.heap.get(lastIndex);
+        this.heap.set(lastIndex, this.heap.get(firstIndex));
+        this.heap.set(firstIndex, temp);
     }
 
     private static int getParent(int index) {

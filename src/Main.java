@@ -5,18 +5,14 @@ import datastructures.*;
 public class Main {
     public static void main(String[] args) {
         MinHeap testHeap = new MinHeap();
-        testHeap.add(5);
-        testHeap.add(4);
-        testHeap.add(8);
-        testHeap.add(9);
-        testHeap.add(1);
-        testHeap.add(3);
-        testHeap.add(4);
-        testHeap.add(10);
-        testHeap.add(2);
-        testHeap.add(3);
-        testHeap.add(12);
-        testHeap.add(1);
+        Random rand = new Random();
+        int count = 1;
+        while (count <= 15) {
+            testHeap.add(rand.nextInt(30));
+            count++;
+        }
+        testHeap.print();
+        System.out.println("Removing smallest: " + testHeap.remove());
         testHeap.print();
 
     }
