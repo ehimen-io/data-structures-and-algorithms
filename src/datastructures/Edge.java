@@ -5,11 +5,11 @@ public class Edge {
     Vertex endVertex;
 
     public Edge(Vertex endVertex) {
-        this.endVertex = endVertex;
+        this(0, endVertex);
     }
 
     public Edge(int cost, Vertex endVertex) {
-        this(endVertex);
+        this.endVertex = endVertex;
         this.cost = cost;
     }
 }
