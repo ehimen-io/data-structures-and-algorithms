@@ -4,11 +4,18 @@ public class Node {
     public String data;
     private Node next;
     private Node prev;
+    public String key;
 
     public Node(String data) {
         this.data = data;
         this.next = null;
         this.prev = null;
+    }
+
+    // Constructor Overrider for use in Hash Maps
+    public Node(String key, String data) {
+        this(data);
+        this.key = key;
     }
 
     // Next node setter and getter
