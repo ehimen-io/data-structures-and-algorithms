@@ -11,12 +11,14 @@ public class MinHeap {
         this.tail = 0;
     }
 
+    // Adding a new number to the heap
     public void add(int element) {
         this.heap.add(this.tail, element);
         this.tail++;
         this.heapifyUp();
     }
 
+    // Removing the minimum number from the heap
     public int remove() {
         if (this.heap.size() == 0) {
             System.out.println("Empty Heap!");
@@ -34,6 +36,7 @@ public class MinHeap {
         return head;
     }
 
+    // Restructures the MinHeap to make sure parentNode < childNodes
     private void heapifyUp() {
         if (this.heap.size() <= 1) {
             return;
@@ -48,6 +51,7 @@ public class MinHeap {
         }
     }
 
+    // Restructures the MinHeap to make sure parentNode < childNodes
     private void heapifyDown() {
         if (this.heap.size() <= 1) {
             return;
@@ -88,6 +92,8 @@ public class MinHeap {
 
     }
 
+    // Returns an integer value corresponding to what element can be swapped with
+    // its parent
     private int canSwap(int parent, int leftChild, int rightChild) {
         boolean leftSwap = this.exists(leftChild) && this.heap.get(parent) > this.heap.get(leftChild);
         boolean rightSwap = this.exists(rightChild) && this.heap.get(parent) > this.heap.get(rightChild);
@@ -103,28 +109,37 @@ public class MinHeap {
         }
     }
 
+    // Returns true if the index given is out of bounds
     private boolean exists(int index) {
         return index <= this.heap.size() - 1;
     }
 
+    // Swaps the element in heap[firstIndex] with the element in heap[lastIndex]
     private void swap(int firstIndex, int lastIndex) {
         int temp = this.heap.get(lastIndex);
         this.heap.set(lastIndex, this.heap.get(firstIndex));
         this.heap.set(firstIndex, temp);
     }
 
+    // returns the integer corresponding to the parent node of the node at
+    // heap[index]
     private static int getParent(int index) {
         return (int) Math.floor(index / 2);
     }
 
+    // returns the integer corresponding to the left child node of the node at
+    // heap[index]
     private static int getLeftChild(int index) {
         return (int) Math.floor(index * 2);
     }
 
+    // returns the integer corresponding to the right child node of the node at
+    // heap[index]
     private static int getRightChild(int index) {
         return (int) Math.floor(index * 2) + 1;
     }
 
+    // Prints a string representation of the array
     public void print() {
         System.out.println(this.heap.toString());
     }
