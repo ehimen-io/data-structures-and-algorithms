@@ -35,18 +35,81 @@ public class MinHeap {
     }
 
     private void heapifyUp() {
-        int current = this.tail - 1;
-        int swapCount = 0;
+        if (this.heap.size() <= 1) {
+            return;
+        }
+        int currentIndex = this.heap.size() - 1;
+        int parentIndex = getParent(currentIndex);
 
+        while (this.heap.get(currentIndex) < this.heap.get(parentIndex) && currentIndex > 0) {
+            swap(currentIndex, parentIndex);
+            currentIndex = parentIndex;
+            parentIndex = getParent(currentIndex);
+        }
     }
 
     private void heapifyDown() {
-        int currentIndex = this.tail - 1;
+        if (this.heap.size() <= 1) {
+            return;
+        }
+        int parent = 0;
+        int left = getLeftChild(parent);
+        int right = getRightChild(parent);
+        int swapCode = this.canSwap(parent, left, right);
+
+        while (swapCode > 0) {
+            switch (swapCode) {
+                case 3:
+                    boolean chooseLeft = this.heap.get(left) <= this.heap.get(right);
+                    if (chooseLeft) {
+                        this.swap(parent, left);
+                        parent = left;
+                    } else {
+                        this.swap(parent, right);
+                        parent = right;
+                    }
+                    break;
+
+                case 2:
+                    this.swap(parent, left);
+                    parent = left;
+                    break;
+
+                default:
+                    this.swap(parent, right);
+                    parent = right;
+                    break;
+            }
+
+            left = getLeftChild(parent);
+            right = getRightChild(parent);
+            swapCode = this.canSwap(parent, left, right);
+        }
+
+    }
+
+    private int canSwap(int parent, int leftChild, int rightChild) {
+        boolean leftSwap = this.exists(leftChild) && this.heap.get(parent) > this.heap.get(leftChild);
+        boolean rightSwap = this.exists(rightChild) && this.heap.get(parent) > this.heap.get(rightChild);
+
+        if (leftSwap && rightSwap) {
+            return 3;
+        } else if (leftSwap) {
+            return 2;
+        } else if (rightSwap) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    private boolean exists(int index) {
+        return index <= this.heap.size() - 1;
     }
 
     private void swap(int firstIndex, int lastIndex) {
-        int firstElement = this.heap.get(firstIndex);
-        int lastElement = this.heap.get(lastIndex);
+        int firstElement = this.heap.remove(firstIndex);
+        int lastElement = this.heap.remove(lastIndex);
         this.heap.add(lastIndex, firstElement);
         this.heap.add(firstIndex, lastElement);
     }
@@ -55,11 +118,11 @@ public class MinHeap {
         return (int) Math.floor(index / 2);
     }
 
-    private static int getLeft(int index) {
+    private static int getLeftChild(int index) {
         return (int) Math.floor(index * 2);
     }
 
-    private static int getRight(int index) {
+    private static int getRightChild(int index) {
         return (int) Math.floor(index * 2) + 1;
     }
 
