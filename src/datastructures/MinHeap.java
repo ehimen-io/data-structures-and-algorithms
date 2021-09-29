@@ -18,19 +18,30 @@ public class MinHeap {
     }
 
     public int remove() {
+        if (this.heap.size() == 0) {
+            System.out.println("Empty Heap!");
+            return -1;
+        }
+
         int head = this.heap.remove(0);
-        int tail = this.heap.remove(this.tail - 1);
+        if (this.heap.size() == 0) {
+            return head;
+        }
+        int tail = this.heap.remove(this.heap.size() - 1);
         this.heap.add(0, tail);
+        this.tail--;
         this.heapifyDown();
         return head;
     }
 
     private void heapifyUp() {
+        int current = this.tail - 1;
+        int swapCount = 0;
 
     }
 
     private void heapifyDown() {
-
+        int currentIndex = this.tail - 1;
     }
 
     private void swap(int firstIndex, int lastIndex) {
@@ -40,20 +51,20 @@ public class MinHeap {
         this.heap.add(firstIndex, lastElement);
     }
 
-    private int getParent(int index) {
+    private static int getParent(int index) {
         return (int) Math.floor(index / 2);
     }
 
-    private int getLeft(int index) {
+    private static int getLeft(int index) {
         return (int) Math.floor(index * 2);
     }
 
-    private int getRight(int index) {
+    private static int getRight(int index) {
         return (int) Math.floor(index * 2) + 1;
     }
 
     public void print() {
-
+        System.out.println(this.heap.toString());
     }
 
 }
