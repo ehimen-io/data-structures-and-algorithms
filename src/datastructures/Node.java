@@ -2,8 +2,8 @@ package datastructures;
 
 public class Node {
     public String data;
-    private Node next;
-    private Node prev;
+    public Node next;
+    public Node prev;
     public String key;
 
     public Node(String data) {
