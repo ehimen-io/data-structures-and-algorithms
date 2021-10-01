@@ -45,6 +45,16 @@ public class Recursion {
 
     // Recursively searches a list for a value. Returns empty string if not found
     public static boolean searchList(LinkedList list, String value) {
-        return false;
+        return searchList(list.head, value);
+    }
+
+    public static boolean searchList(Node head, String value) {
+        // Base case
+        if (!head.hasNextNode()) {
+            return head.data == value;
+        }
+        // Recursive case
+        // System.out.println("check");
+        return head.data == value || searchList(head.next, value);
     }
 }

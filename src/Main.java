@@ -17,8 +17,7 @@ public class Main {
 
         cities.printList();
 
-        Recursion.reverseList(cities);
-        cities.printList();
+        System.out.println(Recursion.searchList(cities, "Mississauga"));
 
     }
 }
