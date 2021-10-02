@@ -28,6 +28,6 @@ public class Main {
 
         System.out.println(Arrays.toString(numbers));
 
-        System.out.println(Arrays.toString(MergeSort.sort(numbers)));
+        System.out.println(Arrays.toString(QuickSort.sort(numbers)));
     }
 }
