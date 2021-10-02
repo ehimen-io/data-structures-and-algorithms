@@ -1,7 +1,7 @@
 package datastructures;
 
 public class LinkedList {
-    Node head;
+    public Node head;
 
     public LinkedList() {
         this.head = null;
